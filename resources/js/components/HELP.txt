@@ -1,0 +1,5 @@
+Getting the params
+${this.$route.params.id}
+
+change url
+this.$router.push({ name: 'posts' });
