@@ -37,7 +37,7 @@
               <th>{{ category.name }}</th>
               <th>
               <button class="btn btn-info" @click.prevent="onEdit(category)">Edit</button>
-              <button class="btn btn-danger" @click.prevent="deleteData(category.id)" v-show="mode === 'new'">Delete</button>
+              <button class="btn btn-danger" @click.prevent="deleteData(category)" v-show="mode === 'new'">Delete</button>
               </th>
             </tr>
           </tbody>
@@ -64,6 +64,7 @@
         categories: []
       }
     },
+
     async mounted() {
       let uri = `${pista_base_url}/categories`;
       this.axios.get(uri).then(response => {
@@ -79,7 +80,8 @@
           this.axios.post(uri, this.category).then((response) => {
             const categories = [...this.categories, response.data.category];
             this.categories = categories;
-            console.log(this.categories);
+            this.cancelChange();
+            toastr.success(`Record created successfully`, 'Created!');
           });
         }
         else {
@@ -87,10 +89,7 @@
         }
       },
       onEdit(category) {
-
-        toastr.success('Have fun storming the castle!', 'Miracle Max Says');
-        this.$set(this.category, 'id', category.id);
-        this.$set(this.category, 'name', category.name);
+        this.category = { ...category };
         this.btn_title = 'Update';
         this.mode = 'editing';
       },
@@ -99,14 +98,15 @@
         this.btn_title = 'Create';
         this.mode = 'new';
       },
-      deleteData(id) {
+      deleteData(category) {
         const a = confirm('Are you sure?');
         if (!a) return;
-        let uri = `${pista_base_url}/categories/${id}`;
+        let uri = `${pista_base_url}/categories/${category.id}`;
         this.axios.delete(uri).then((response) => {
-          const categories = this.categories.filter(c => c.id !== id);
+          const categories = this.categories.filter(c => c.id !== category.id);
           // this.categories.splice(this.categories.indexOf(id), 1)
           this.categories = categories;
+          toastr.error(`Record deleted successfully`, 'Deleted!');
         });
       },
       updateData() {
@@ -117,9 +117,9 @@
           const categories = [...this.categories];
           const categoryInDB = this.categories.find(c => c.id === this.category.id);
           const index = categories.indexOf(categoryInDB);
-          categoryInDB.name = this.category.name;
-          categories[index] = categoryInDB;
+          categories[index] = { ...this.category };
           this.categories = categories;
+          toastr.info(`Record updated successfully`, 'Updated!');
         });
       }
     }

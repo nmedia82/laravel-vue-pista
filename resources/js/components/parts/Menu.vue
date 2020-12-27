@@ -10,12 +10,11 @@
                 </li>
     
                 <li data-menu="dropdown" class="dropdown nav-item">
-                    <router-link to="/category" class="dropdown-toggle nav-link"><i class="icon-home3"></i>Category</router-link>
-                    <ul class="dropdown-menu">
-                        <li data-menu="" class="active">
-                            <a href="dashboard-fitness.html" data-toggle="dropdown" class="dropdown-item">Add Category</a>
-                        </li>
-                    </ul>
+                    <router-link to="/category" class="dropdown-toggle nav-link"><i class="icon-grid2"></i>Category</router-link>
+                </li>
+                
+                <li data-menu="dropdown" class="dropdown nav-item">
+                    <router-link to="/resource" class="dropdown-toggle nav-link"><i class="icon-ribbon"></i>Resource</router-link>
                 </li>
             </ul>
         </div>

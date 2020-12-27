@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
 
+mix.webpackConfig({ output: { filename: '[name].js', chunkFilename: 'js/[name].app.js', publicPath: '/saapkdev/laravel/pista/public/' } });
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

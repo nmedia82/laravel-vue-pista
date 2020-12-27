@@ -37,7 +37,7 @@
     <!-- BEGIN ROBUST CSS-->
     <link rel="stylesheet" type="text/css" href=" {{ url('robust/app-assets/css/bootstrap-extended.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ url('robust/app-assets/css/app.css') }}">
-    <link rel="stylesheet" type="text/css" href=" {{ url('robust/app-assets/css/colors.css') }}">
+    <!--<link rel="stylesheet" type="text/css" href=" {{ url('robust/app-assets/css/colors.css') }}">-->
     <!-- END ROBUST CSS-->
     <!-- BEGIN Page Level CSS-->
     <link rel="stylesheet" type="text/css" href=" {{ url('robust/app-assets/css/core/menu/menu-types/horizontal-top-icon-menu.css') }}">
@@ -107,6 +107,6 @@
     <!--<script src="{{ url('robust/app-assets/js/scripts/pages/dashboard-fitness.js') }}" type="text/javascript"></script>-->
     <!-- END PAGE LEVEL JS-->
     
-    <script src="{{ asset(mix('js/app.js')) }}" type="text/javascript"></script>
+    <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
   </body>
 </html>

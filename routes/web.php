@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::resource('categories', 'CategoryController');
+Route::resource('resources', 'ResourceController');
 
 Route::get('/{any}', function () {
   return view('main');
